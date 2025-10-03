@@ -1,8 +1,10 @@
 package com.example.flow.ManualDependency
 
-class UserRegistrationServiceManualDependency(
-    private val userRepository: UserRepositoryManualDependency,
-    private val emailService: EmailServiceManualDependency
+import javax.inject.Inject
+
+class UserRegistrationService @Inject constructor(
+    private val userRepository: UserRepository,
+    private val emailService: EmailService
 ) {
 
     fun registerUser(email: String, password: String){
