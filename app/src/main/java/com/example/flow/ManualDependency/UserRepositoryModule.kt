@@ -7,8 +7,16 @@ import dagger.Provides
 @Module
 class UserRepositoryModule {
 
-@Provides
+    @FirebaseQualifier
+   @Provides
     fun getFirebaseRepository():UserRepository{
         return FirebaseRepository()
     }
+
+    @SqlQualifier
+    @Provides
+    fun getSQLRepository():UserRepository{
+        return SQLRepository()
+    }
+
 }

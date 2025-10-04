@@ -4,7 +4,7 @@ import com.example.flow.MainActivity
 import dagger.Component
 
 
-@Component(modules = [NotificationServiceModule::class,SQLModule::class])
+@Component(modules = [NotificationServiceModule::class,UserRepositoryModule::class])
 interface UserRegistrationComponent {
     fun inject(mainActivity: MainActivity)
 }
