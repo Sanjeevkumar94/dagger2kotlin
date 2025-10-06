@@ -7,12 +7,12 @@ import javax.inject.Named
 
 
 @Module
- class NotificationServiceModule {
+ class NotificationServiceModule(private val retryCount:Int) {
 
     @Named("message")
     @Provides
     fun getMessageService():NotificationService{
-        return MessageService()
+        return MessageService(retryCount)
     }
 
     @Named("email")
