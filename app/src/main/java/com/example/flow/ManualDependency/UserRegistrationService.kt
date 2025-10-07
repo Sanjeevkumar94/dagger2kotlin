@@ -4,7 +4,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class UserRegistrationService @Inject constructor(
-    @FirebaseQualifier private val userRepository: UserRepository,
+     private val userRepository: UserRepository,
     @Named("message")private val notificationService: NotificationService
 ) {
 

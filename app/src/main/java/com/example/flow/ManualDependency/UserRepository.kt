@@ -8,14 +8,18 @@ interface UserRepository{
     fun saveUser(email:String,password:String)
     }
 
-class SQLRepository @Inject constructor():UserRepository{
+@ActivityScope
+class SQLRepository @Inject constructor( val analyticsService: AnalyticsService):UserRepository{
     override fun saveUser(email:String,password:String){
         Log.d("didata","User saved in DB")
+        analyticsService.trackEvent("SQLRepository","SQLRepository type")
+
     }
 }
 
-class FirebaseRepository :UserRepository{
+class FirebaseRepository(val analyticsService:AnalyticsService) :UserRepository{
     override fun saveUser(email:String,password:String){
         Log.d("didata","User saved in Firebase")
+        analyticsService.trackEvent("Firebase","firebase type")
     }
 }

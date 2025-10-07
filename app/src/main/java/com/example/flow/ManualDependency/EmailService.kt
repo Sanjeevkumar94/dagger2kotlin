@@ -10,7 +10,7 @@ interface NotificationService{
     }
 
 
-@ApplicationScope
+@ActivityScope
 class EmailService @Inject constructor():NotificationService {
 
     override fun send(to: String, from: String, body: String) {
