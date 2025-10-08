@@ -2,7 +2,6 @@ package com.example.flow
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.flow.ManualDependency.DaggerUserRegistrationComponent
 import com.example.flow.ManualDependency.EmailService
 import com.example.flow.ManualDependency.MessageService
 import com.example.flow.ManualDependency.NotificationServiceModule
@@ -30,12 +29,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
        val appComponent =(application as UserApplication).appComponent
-
-        val component = DaggerUserRegistrationComponent.factory().create(1,appComponent)
-
-        component.inject(this)
-
-        userRegistrationService.registerUser("sanj@yopmail.com","123")
+       val userRegistrationComponent=  appComponent.getUserRegistrationComponent().create(3)
+       userRegistrationComponent.inject(this)
+       userRegistrationService.registerUser("sanj@yopmail.com","123")
 
 
     }
