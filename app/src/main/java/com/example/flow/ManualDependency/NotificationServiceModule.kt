@@ -12,8 +12,8 @@ import javax.inject.Named
      @ActivityScope
     @Named("message")
     @Provides
-    fun getMessageService(retryCount:Int):NotificationService{
-        return MessageService(retryCount)
+    fun getMessageService():NotificationService{
+        return MessageService(3)
     }
 
     @Named("email")
