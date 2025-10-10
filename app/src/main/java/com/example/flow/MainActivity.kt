@@ -31,7 +31,11 @@ class MainActivity : AppCompatActivity() {
 
        val appComponent =(application as UserApplication).appComponent
 
-        val component = DaggerUserRegistrationComponent.factory().create(1,appComponent)
+        val component = DaggerUserRegistrationComponent.builder()
+            .appComponent(appComponent)
+            .retryCount(3)
+            .build()
+
 
         component.inject(this)
 
