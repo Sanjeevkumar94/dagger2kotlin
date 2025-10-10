@@ -29,9 +29,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
        val appComponent =(application as UserApplication).appComponent
-       val userRegistrationComponent=  appComponent.getUserRegistrationComponent()
+       val userRegistrationComponent=  appComponent.getUserRegistrationComponentBuilder().retryCount(3).build()
        userRegistrationComponent.inject(this)
-       userRegistrationService.registerUser("sanj@yopmail.com","123")
+
+        userRegistrationService.registerUser("sanj@yopmail.com","123")
 
 
     }
